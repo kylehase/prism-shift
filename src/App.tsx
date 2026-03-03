@@ -204,23 +204,23 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 select-none">
       {/* Header */}
-      <div className="w-full max-w-[400px] flex justify-between items-end mb-8">
-        <div>
-          <h1 className="text-5xl font-extrabold font-display tracking-tighter text-white">
-            PRISM<span className="text-white/40">SHIFT</span> 30
+      <div className="w-full max-w-[400px] flex justify-between items-start mb-8">
+        <div className="flex flex-col">
+          <h1 className="text-4xl font-extrabold font-display tracking-tighter text-white leading-none">
+            PRISM<span className="text-white/40">SHIFT</span><span className="text-white/20 ml-1">30</span>
           </h1>
-          <p className="text-white/50 text-sm font-medium uppercase tracking-widest mt-1">
-            Mix to reach the light
+          <p className="text-white/30 text-[10px] font-bold uppercase tracking-[0.15em] mt-2">
+            Swipe to multiply factors of 30
           </p>
         </div>
         <div className="flex gap-2">
-          <div className="glass-panel px-4 py-2 flex flex-col items-center min-w-[80px]">
-            <span className="text-[10px] uppercase tracking-tighter text-white/40 font-bold">Score</span>
-            <span className="text-xl font-bold font-display">{score}</span>
+          <div className="glass-panel px-3 py-1.5 flex flex-col items-center min-w-[70px]">
+            <span className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Score</span>
+            <span className="text-lg font-bold font-display leading-tight">{score}</span>
           </div>
-          <div className="glass-panel px-4 py-2 flex flex-col items-center min-w-[80px]">
-            <span className="text-[10px] uppercase tracking-tighter text-white/40 font-bold">Best</span>
-            <span className="text-xl font-bold font-display">{bestScore}</span>
+          <div className="glass-panel px-3 py-1.5 flex flex-col items-center min-w-[70px]">
+            <span className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Best</span>
+            <span className="text-lg font-bold font-display leading-tight">{bestScore}</span>
           </div>
         </div>
       </div>
@@ -287,8 +287,8 @@ const App: React.FC = () => {
               animate={{ opacity: 1 }}
               className="absolute inset-0 z-50 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center p-8 text-center"
             >
-              <h2 className="text-4xl font-black font-display mb-2">SPECTRUM FULL</h2>
-              <p className="text-white/60 mb-8">The colors have settled. Your journey ends here.</p>
+              <h2 className="text-4xl font-black font-display mb-2">Game Over</h2>
+              <p className="text-white/60 mb-8">No moves left.</p>
               <button 
                 onClick={initGame}
                 className="bg-white text-black px-8 py-3 rounded-full font-bold flex items-center gap-2 hover:scale-105 transition-transform"
@@ -356,62 +356,32 @@ const App: React.FC = () => {
                     <span>Arrows</span>
                   </div>
                 </div>
-                
+                <div>
                 <div className="space-y-6">
-                  {/* Prime Colors Section */}
+                  {/* Core Mechanics Section */}
                   <div className="space-y-3">
-                    <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Prime Elements</p>
+                    <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Mechanics</p>
                     <p className="text-sm leading-relaxed">
-                      Red, Blue, and Yellow are your <span className="text-white font-semibold">Prime Colors</span>. Each is assigned a <span className="text-white font-semibold">Prime Number</span>. 
-                      Colors and numbers work the same; they are just different representations of primes.
+                      Combine tiles to <span className="text-white font-semibold italic">multiply</span> their values. You can only merge tiles if their product is a <span className="text-white font-semibold">factor of 30</span> (2, 3, 5, 6, 10, 15, or 30).
                     </p>
-                    <div className="grid grid-cols-3 gap-3">
-                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
-                        <div className="w-3.5 h-3.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
-                        <span className="text-xs font-medium">Red = 2</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
-                        <div className="w-3.5 h-3.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]" />
-                        <span className="text-xs font-medium">Blue = 3</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
-                        <div className="w-3.5 h-3.5 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]" />
-                        <span className="text-xs font-medium">Yellow = 5</span>
-                      </div>
-                    </div>
                   </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Mixes Section */}
-                    <div className="space-y-3">
-                      <p className="text-xs font-bold uppercase text-white/40 tracking-wider">Mixing Rules</p>
-                      <p className="text-[13px] leading-snug mb-2">Mixing tiles <span className="italic">multiplies</span> their numbers, but you can only mix <span className="text-white font-semibold">factors of 30</span>.</p>
-                      <ul className="text-xs space-y-3 bg-white/5 rounded-xl p-4 border border-white/5">
-                        <li className="flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full bg-red-500" /> 2 × <div className="w-2.5 h-2.5 rounded-full bg-blue-500" /> 3 = <div className="w-2.5 h-2.5 rounded-full bg-purple-500" /> 6
-                        </li>
-                        <li className="flex items-center gap-2 opacity-40 grayscale">
-                           2 ×  6 = <span className="text-red-400 font-bold">Invalid (12)</span>
-                        </li>
-                      </ul>
-                    </div>
-
-                    {/* Goal Section */}
-                    <div className="space-y-3">
-                      <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Ultimate Goal</p>
-                      <div className="bg-white/5 rounded-xl p-4 border border-white/10 space-y-3">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)]">
-                            <span className="text-black font-bold text-sm">30</span>
-                          </div>
-                          <p className="text-sm font-semibold">Reach White Light</p>
+                  {/* Goal Section */}
+                  <div className="space-y-3">
+                    <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Goal</p>
+                    <div className="bg-white/5 rounded-xl p-4 border border-white/10 space-y-3">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                          <span className="text-black font-bold text-sm">30</span>
                         </div>
-                        <p className="text-xs text-white/60 leading-relaxed">
-                          Once you achieve <span className="text-white font-bold">30</span>, merge White tiles to sum their values and maximize your score.
-                        </p>
+                        <p className="text-sm font-semibold">Reach White Light</p>
                       </div>
+                      <p className="text-xs text-white/60 leading-relaxed">
+                        Reaching <span className="text-white font-bold">30</span> turns the tile White. From here, merge White tiles with each other to <span className="text-white font-semibold">add</span> their values (30 + 30 = 60, etc.) and maximize your score.
+                      </p>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
 
@@ -421,14 +391,14 @@ const App: React.FC = () => {
               >
                 Got it
               </button>
-            </div>
+              </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* Footer */}
       <div className="mt-12 text-white/20 text-[10px] uppercase tracking-[0.2em] font-bold">
-        A Kinetic Color Experiment
+        Made by AI Studio
       </div>
     </div>
   );
