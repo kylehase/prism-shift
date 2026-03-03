@@ -207,7 +207,7 @@ const App: React.FC = () => {
       <div className="w-full max-w-[400px] flex justify-between items-end mb-8">
         <div>
           <h1 className="text-5xl font-extrabold font-display tracking-tighter text-white">
-            PRISM<span className="text-white/40">SHIFT</span>
+            PRISM<span className="text-white/40">SHIFT</span> 30
           </h1>
           <p className="text-white/50 text-sm font-medium uppercase tracking-widest mt-1">
             Mix to reach the light
