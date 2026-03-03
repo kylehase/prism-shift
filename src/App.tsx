@@ -344,41 +344,72 @@ const App: React.FC = () => {
               className="glass-panel p-8 max-w-md w-full bg-[#111] border-white/20"
               onClick={e => e.stopPropagation()}
             >
-              <div className="flex items-center gap-3 mb-6">
-                <Zap className="text-yellow-400" />
-                <h3 className="text-2xl font-bold font-display">How to Play</h3>
-              </div>
-              
-              <div className="space-y-4 text-white/80">
-                <p>Swipe to move tiles. When two tiles that can mix touch, they combine!</p>
+              <div className="space-y-6 text-white/80">
+                <div className="flex items-center justify-between border-b border-white/10 pb-4">
+                  <div className="flex items-center gap-3">
+                    <Zap className="text-yellow-400" size={24} />
+                    <h3 className="text-2xl font-bold font-display">How to Play</h3>
+                  </div>
+                  <div className="flex gap-2 text-[10px] font-bold uppercase tracking-widest text-white/30">
+                    <span>Swipe</span>
+                    <span className="opacity-50">•</span>
+                    <span>Arrows</span>
+                  </div>
+                </div>
                 
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <p className="text-xs font-bold uppercase text-white/40">The Prime System (Accessibility)</p>
-                    <p className="text-sm">Each color is mapped to a prime number. Mixing is like multiplication!</p>
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="flex items-center gap-2 text-xs"><div className="w-3 h-3 rounded-full bg-red-500" /> Red = 2</div>
-                      <div className="flex items-center gap-2 text-xs"><div className="w-3 h-3 rounded-full bg-blue-500" /> Blue = 3</div>
-                      <div className="flex items-center gap-2 text-xs"><div className="w-3 h-3 rounded-full bg-yellow-500" /> Yellow = 5</div>
+                <div className="space-y-6">
+                  {/* Prime Colors Section */}
+                  <div className="space-y-3">
+                    <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Prime Elements</p>
+                    <p className="text-sm leading-relaxed">
+                      Red, Blue, and Yellow are your <span className="text-white font-semibold">Prime Colors</span>. Each is assigned a <span className="text-white font-semibold">Prime Number</span>. 
+                      Colors and numbers work the same; they are just different representations of primes.
+                    </p>
+                    <div className="grid grid-cols-3 gap-3">
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                        <div className="w-3.5 h-3.5 rounded-full bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.4)]" />
+                        <span className="text-xs font-medium">Red = 2</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                        <div className="w-3.5 h-3.5 rounded-full bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.4)]" />
+                        <span className="text-xs font-medium">Blue = 3</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2 border border-white/5">
+                        <div className="w-3.5 h-3.5 rounded-full bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.4)]" />
+                        <span className="text-xs font-medium">Yellow = 5</span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold uppercase text-white/40">Mixes</p>
-                      <ul className="text-sm space-y-1">
-                        <li>2 × 3 = <span className="text-purple-400">6 (Purple)</span></li>
-                        <li>3 × 5 = <span className="text-green-400">15 (Green)</span></li>
-                        <li>5 × 2 = <span className="text-orange-400">10 (Orange)</span></li>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {/* Mixes Section */}
+                    <div className="space-y-3">
+                      <p className="text-xs font-bold uppercase text-white/40 tracking-wider">Mixing Rules</p>
+                      <p className="text-[13px] leading-snug mb-2">Mixing tiles <span className="italic">multiplies</span> their numbers, but you can only mix <span className="text-white font-semibold">factors of 30</span>.</p>
+                      <ul className="text-xs space-y-3 bg-white/5 rounded-xl p-4 border border-white/5">
+                        <li className="flex items-center gap-2">
+                          <div className="w-2.5 h-2.5 rounded-full bg-red-500" /> 2 × <div className="w-2.5 h-2.5 rounded-full bg-blue-500" /> 3 = <div className="w-2.5 h-2.5 rounded-full bg-purple-500" /> 6
+                        </li>
+                        <li className="flex items-center gap-2 opacity-40 grayscale">
+                           2 ×  6 = <span className="text-red-400 font-bold">Invalid (12)</span>
+                        </li>
                       </ul>
-                      <p className="text-[10px] text-red-400/80 font-medium mt-2 leading-tight">
-                        Note: You can only mix if the result is a factor of 30. (e.g. 6 × 2 = 12 is invalid).
-                      </p>
                     </div>
-                    <div className="space-y-2">
-                      <p className="text-xs font-bold uppercase text-white/40">The Goal</p>
-                      <p className="text-sm">Multiply to reach <span className="text-white font-bold">30 (White)</span>.</p>
-                      <p className="text-sm">Combine 30s to reach 60, 120, and beyond!</p>
+
+                    {/* Goal Section */}
+                    <div className="space-y-3">
+                      <p className="text-xs font-bold uppercase text-white/40 tracking-wider">The Ultimate Goal</p>
+                      <div className="bg-white/5 rounded-xl p-4 border border-white/10 space-y-3">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                            <span className="text-black font-bold text-sm">30</span>
+                          </div>
+                          <p className="text-sm font-semibold">Reach White Light</p>
+                        </div>
+                        <p className="text-xs text-white/60 leading-relaxed">
+                          Once you achieve <span className="text-white font-bold">30</span>, merge White tiles to sum their values and maximize your score.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
